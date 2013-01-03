@@ -3,6 +3,13 @@
 # C extensions
 *.so
 
+# program running data
+KM
+BPL
+inp*
+out*                                                                                                                                         
+millington_file
+
 # Packages
 *.egg
 *.egg-info
