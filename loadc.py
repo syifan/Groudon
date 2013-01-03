@@ -22,7 +22,7 @@ DEFAULT_RES =5
 def getConductivity_c(lat,lng):
     if lat < LAT_SW and lat > LAT_NE and lng < LNG_SW and lng > LNG_NE:
         return -1
-    im = Image.open('newz_cut.png')
+    im = Image.open('./data/NewZealand.png')
     pixels = im.load()
     width,height = im.size
     lat_diff = abs(LAT_SW - LAT_NE)
@@ -35,7 +35,7 @@ def getConductivity_c(lat,lng):
 
 def getConductivity_c_mat(data):
     conductivity_c_mat = []
-    im = Image.open('newz_cut.png')
+    im = Image.open('./data/NewZealand.png')
     pixels = im.load()
     width,height = im.size
     lat_diff = abs(LAT_SW - LAT_NE)
