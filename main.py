@@ -58,19 +58,15 @@ def do_simulation(job):
     # for DEBUG
     try:
         running_id = job[0][1]
-        parameters = job[0][4]
+        parameters = job[0][2]
     except Exception,e:
         print "ERROR- Point Num ERROR OR Lack LAT LNG"
         mark_as_complete(job[0])
         return 1
 
     para_set = split_parameters(parameters)
-    key = 0
     clean_pre_data(running_id)
     for data in para_set:
-        print "KEY"
-        print key
-        key = key+1
         lat1 = data[0].split("(")[1].strip()
         lng1 = data[1].split(")")[0].strip()
         lat2 = data[2].split("(")[1].strip()
@@ -331,12 +327,6 @@ def save_Et(Et,running_id):
 def upload_res():
     random_num = str(random.randrange(0,10001,2))
     try:
-		#u = UpYun('groundwave','quake0day','mZy0rJGP')
-		#data = open(os.getcwd()+"/out",'r')
-		#data_tr = open(os.getcwd()+"/simple.tr",'r')
-		#a = u.writeFile(random_num+".txt",data)
-		#b = u.writeFile("/tr/"+random_num+".txt",data_tr)
-		#print random_num
         shutil.copy2(os.getcwd()+"/out","/home/quake0day/www/res/"+random_num)
         shutil.copy2(os.getcwd()+"/simple.tr","/home/quake0day/www/tr/"+random_num)
     except Exception,e:
@@ -378,6 +368,7 @@ def clean_pre_data(running_id):
     return 0
 
 if __name__ == '__main__':
+    #main
     while 1:
         sleep(1)
         try:
