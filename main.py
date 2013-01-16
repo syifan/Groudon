@@ -111,12 +111,16 @@ def run_GRWAVE(running_id,lat1,lng1,lat2,lng2,freq,pol,height,height_r,bandwidth
         geo_height = getPathInfo(lat1,lng1,lat2,lng2)
         if geo_height == None:
             raise Exception,e
+        elif geo_height < 0:
+            geo_height = 0
     except Exception,e:
         print e
         print "cannot grab geo_info"
         mark_as_complete(running_id)
     try:
         geo_height2 = formatPathInfo(geo_height)
+        if geo_height2 < 0:
+            geo_height2 = 0
     except Exception,e:
         mark_as_complete(running_id)
         print "geo height grab error"
@@ -124,9 +128,17 @@ def run_GRWAVE(running_id,lat1,lng1,lat2,lng2,freq,pol,height,height_r,bandwidth
         return 1
     try:
         #hei1_mean = getHeight_mean(lat1,lng1,lat2,lng2)
-        HTT = getHTT(geo_height2) + height
-        HRR = getHRR(geo_height2) + height_r
-        print "HTT:",HTT,HRR
+        if getHTT(geo_height2) < 0:
+            HTT = height
+        else:
+            HTT = getHTT(geo_height2) + height
+        if getHRR(geo_height2) < 0:
+            HRR = height_r
+        else:
+            HRR = getHRR(geo_height2) + height_r
+        #HTT = getHTT(geo_height2) + height
+        #HRR = getHRR(geo_height2) + height_r
+        print "HTT,HRR:",HTT,HRR
     except Exception,e:
         print "error calculate HTT HRR"
         mark_as_complete(running_id)
