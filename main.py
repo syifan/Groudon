@@ -338,9 +338,10 @@ def save_Et(Et,running_id):
 
 def upload_res():
     random_num = str(random.randrange(0,10001,2))
+    print rundom_num
     try:
-        shutil.copy2(os.getcwd()+"/out","/home/quake0day/www/res/"+random_num)
-        shutil.copy2(os.getcwd()+"/simple.tr","/home/quake0day/www/tr/"+random_num)
+        shutil.copy2(os.getcwd()+"/out","/home/quake0day/www/Torterra/res/"+random_num)
+        shutil.copy2(os.getcwd()+"/simple.tr","/home/quake0day/www/Torterra/tr/"+random_num)
     except Exception,e:
         print "upload error"
     return random_num
