@@ -364,6 +364,7 @@ def mark_as_complete(running_id):
     conn = connMysql()
     cur = conn.cursor()
     sql = "UPDATE `gr`.`main` SET `status` = 1 where running_id= " +str(running_id)
+    print sql
    # print sql
     cur.execute(sql)
     conn.commit()
