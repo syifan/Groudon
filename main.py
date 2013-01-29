@@ -111,10 +111,11 @@ def run_GRWAVE(running_id,lat1,lng1,lat2,lng2,freq,pol,height,height_r,bandwidth
 
     try:
         geo_height = getPathInfo(lat1,lng1,lat2,lng2)
-        print 'geo_height = ', geo_height
+        #print 'geo_height = ', geo_height
         if geo_height == None:
             raise Exception,e
         elif geo_height < 0:
+            # I really dont understand why geo_height < 0 !!!
             geo_height = 0
     except Exception,e:
         print e
@@ -122,6 +123,7 @@ def run_GRWAVE(running_id,lat1,lng1,lat2,lng2,freq,pol,height,height_r,bandwidth
         mark_as_complete(running_id)
     try:
         geo_height2 = formatPathInfo(geo_height)
+        print 'geo_height2 = ', geo_height2
         if geo_height2 < 0:
             geo_height2 = 0
     except Exception,e:
