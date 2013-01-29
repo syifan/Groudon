@@ -37,7 +37,7 @@ def getGoogleElevationData(path="36.578581,-118.291994|36.23998,-116.83171",samp
 
     url = ELEVATION_BASE_URL + '?' + urllib.urlencode(elvtn_args)
     response = simplejson.load(urllib.urlopen(url))
-    print response
+    
     #print response
 
 
