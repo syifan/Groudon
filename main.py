@@ -340,7 +340,7 @@ def save_Et(Et,running_id):
 
 def upload_res():
     random_num = str(random.randrange(0,10001,2))
-    print rundom_num
+    print 'random_num = ',random_num
     try:
         shutil.copy2(os.getcwd()+"/out","/home/quake0day/www/Torterra/res/"+random_num)
         shutil.copy2(os.getcwd()+"/simple.tr","/home/quake0day/www/Torterra/tr/"+random_num)
@@ -365,7 +365,6 @@ def mark_as_complete(running_id):
     cur = conn.cursor()
     sql = "UPDATE `gr`.`main` SET `status` = 1 where running_id= " +str(running_id)
     print sql
-   # print sql
     cur.execute(sql)
     conn.commit()
     cur.close()
