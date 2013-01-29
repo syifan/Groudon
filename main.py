@@ -56,6 +56,7 @@ def split_parameters(dataset):
 
 def do_simulation(job):
     # for DEBUG
+    print 'doing simulation'
     try:
         running_id = job[0][1]
         parameters = job[0][2]
@@ -88,6 +89,7 @@ def do_simulation(job):
             run_NS(running_id,result_set)
 # Upload the result
             upload_FINAL_RESULT(running_id)
+    print 'succed!'
     mark_as_complete(running_id)
     return 0
         #print freq,pol,height,height_r,bandwidth
